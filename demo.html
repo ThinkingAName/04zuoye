@@ -1,69 +1,185 @@
 <!doctype html>               <!--申明html文档-->
 <html>
-    <head>
-        <meta charset="utf-8">      <!--字符编码为国际编码-->
-        <meta name="Author" content="40期风屿JS——不懂就问">    <!--网页创建者-->
-        <meta name="Keywords" content="作业，练习题">         <!--供搜索引擎搜索匹配的关键-->
-        <meta name="description" content="课后练习题作业，熟悉课堂学习操作">  <!--在搜索有结果页面显示的网页描述-->
-        <title>第2次课后作业</title>   <!--网页标题-->
-        <!--
-      <link rel="stylesheet" type="text/css" href="css/common.css">
-      <link rel="stylesheet" type="text/css" href="css/index.css">
-      <link rel="stylesheet" type="text/css" href="font/iconfont.css">
-      <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
-      -->
-        <style>
-            #head{
-                width:200px;
-                height:200px;
-                /*background-color: red;
-               /* background-image: img/1.png;
-                */
-            }
-            #add{
-                width:50px;
-                height:50px;
-                background-color: red;
-               /* background-image: img/1.png;
-                */
-            }
-            input{
-                width:200px;
-                height:50px;
+<head>
+    <meta charset="utf-8">      <!--字符编码为国际编码-->
+    <meta name="Author" content="Js-40期风屿——不懂就问">    <!--网页创建者-->
+    <meta name="Keywords" content="作业，练习题">         <!--供搜索引擎搜索匹配的关键-->
+    <meta name="description" content="课后练习题作业，熟悉课堂学习操作">  <!--在搜索有结果页面显示的网页描述-->
+    <title>第4课后作业</title>   <!--网页标题-->
+    <style>
+        body, p, ul, dl, dd, ol, h1, h2, h3, h4, h5, h6{ margin:0;}
+        ul,ol{ padding-left:0;list-style:none;}
+        table{ border-collapse:collapse; }
+        th, td{ padding: 0; }
+        em,i{ font-style:normal;/*设置字体样式：正常显示（就是不倾斜）*/}
+        strong,b{ font-weight:normal;/*设置字体加粗：正常显示（就是不加粗）*/}
+        a{ text-decoration:none;/*去掉下划线*/}
+        input,button{border: 0px;padding: 0px}
+        .body{
+            width: 500px;
+            margin: 100px auto;
+        }
+        .head{
+            position:relative;
+            height: 50px;
+            padding-left: 60px;
+            padding-right: 10px;
+            background-color: lightpink;
+        }
+        .head img{
+            display: none;
+        }
+        .content{
+            display:none;
+            float: left;
+            width: 300px;
 
-            }
-        </style>
+            margin-top:10px;
+        }
+        .content input{
+            float: left;
+            width: 200px;
+            height: 30px;
+            padding-left: 20px;
+        }
+        .head button{
+            float: right;
+            width: 60px;
+            height: 30px;
+            background-color:floralwhite;
+
+        }
+        .head .add{
+            width: 80px;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .text li{
+
+            padding:10px 20px 10px 10px;
+            border-bottom: 1px lightgray solid;
+            background-color: beige;
+        }
+        .text li img{
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-top: auto;
+        }
+        .text li p{
+            float: right;
+            height: 40px;
+            font-size: 24px;
+            line-height: 40px;
+        }
+        .head .show{
+            display: block;
+            position:absolute;
+            top: 5px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .clearfix:after{
+            display:block;
+            content:"";
+            clear:both;
+        }
+    </style>
     </head>
 <body>
-    <div id="head"></div>
-    <input id="text" type="text">
-    <div id="add"></div>
+    <div class="body">
+        <div class="head clearfix">
+            <img class="show" src="img/1.png" alt="" width="640px" height="360px">
+            <img src="img/2.png" alt="" width="640px" height="360px">
+            <div class="content">
+                <input  type="text">
+                <button>发表</button>
+            </div>
+            <button class="add">+</button>
+        </div>
+        <ul class="text">
+            <!--<li class="clearfix">
+                <img src="img/1.png" alt="" width="640px" height="360px">
+                <p></p>
+            </li>-->
+        </ul>
+
+    </div>
+
 
 
 
 
     <script>
-        var headImg = document.getElementsByTagName("div")[0];
-        var headImg1 = "red";
-        var headImg2 = "blue";
-                headImg.style.backgroundColor = headImg1;
-        headImg.onclick = function(){
-           if(window.getComputedStyle(headImg,null).backgroundColor == "rgb(255, 0, 0)"){
-               headImg.style.backgroundColor = headImg2;
-           }
-           else  headImg.style.backgroundColor = headImg1;
+        //点击切换头像
+        var headImg = document.getElementsByTagName("img");
+        var content = document.getElementsByClassName("content")[0];
+        var add = document.getElementsByClassName("add")[0];
+        var flag = false; //false content 不显示，true 为显示
+        var send = document.querySelector(".content button");
+        var input = document.getElementsByTagName("input")[0];
+        var list = document.getElementsByTagName("ul")[0];
+        var headImgSrc = headImg[0].src;
+            headImg[0].onclick = function () {
+                this.className = "";
+                headImg[1].className = "show";
+                headImgSrc = headImg[1].src;
+            }
+            headImg[1].onclick = function () {
+                this.className = "";
+                headImg[0].className = "show";
+                headImgSrc = headImg[0].src;
+        }
+        //点击可输入内容
 
-            console.log(window.getComputedStyle(headImg,null).backgroundColor);
-        };
-        var add = document.getElementById("add");
-        add.onclick = function() {
-            if (document.getElementById("text").getAttribute("disabled") == "true")
-                document.getElementById("text").disabled = "false";
-            else
-                document.getElementById("text").disabled = "true";
-            console.log(window.getComputedStyle(document.getElementById("text"),null).disabled);
-        };
-       // console.log(document.getElementById("text").getAttribute("disabled"));
+        console.log(content);
+        console.log(add);
+
+            add.onclick = function () {
+                if(flag){
+                    content.style.display = "none";
+                    flag = false;
+                }else{
+                    content.style.display = "block";
+                    flag = true;
+                }
+            }
+        //点击发表内容
+        send.onclick = function () {
+                var text = input.value;
+                if(text!=="") {
+                    input.value = "";
+                    list.innerHTML = '<li class="clearfix">\n' +
+                        '<img src="' + headImgSrc + '" alt="" width="640px" height="360px">\n' +
+                        '<p>' + text + '</p>' + list.innerHTML;
+                }else
+                    alert("请输入内容");
+
+        }
+
+       //  var headImg = document.getElementsByTagName("div")[0];
+       //  var headImg1 = "red";
+       //  var headImg2 = "blue";
+       //          headImg.style.backgroundColor = headImg1;
+       //  headImg.onclick = function(){
+       //     if(window.getComputedStyle(headImg,null).backgroundColor == "rgb(255, 0, 0)"){
+       //         headImg.style.backgroundColor = headImg2;
+       //     }
+       //     else  headImg.style.backgroundColor = headImg1;
+       //
+       //      console.log(window.getComputedStyle(headImg,null).backgroundColor);
+       //  };
+       //  var add = document.getElementById("add");
+       //  add.onclick = function() {
+       //      if (document.getElementById("text").getAttribute("disabled") == "true")
+       //          document.getElementById("text").disabled = "false";
+       //      else
+       //          document.getElementById("text").disabled = "true";
+       //      console.log(window.getComputedStyle(document.getElementById("text"),null).disabled);
+       //  };
+       // // console.log(document.getElementById("text").getAttribute("disabled"));
 
 
     </script>
