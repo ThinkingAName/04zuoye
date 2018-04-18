@@ -1,0 +1,71 @@
+<!doctype html>               <!--申明html文档-->
+<html>
+    <head>
+        <meta charset="utf-8">      <!--字符编码为国际编码-->
+        <meta name="Author" content="40期风屿JS——不懂就问">    <!--网页创建者-->
+        <meta name="Keywords" content="作业，练习题">         <!--供搜索引擎搜索匹配的关键-->
+        <meta name="description" content="课后练习题作业，熟悉课堂学习操作">  <!--在搜索有结果页面显示的网页描述-->
+        <title>第2次课后作业</title>   <!--网页标题-->
+        <!--
+      <link rel="stylesheet" type="text/css" href="css/common.css">
+      <link rel="stylesheet" type="text/css" href="css/index.css">
+      <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+      <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+      -->
+        <style>
+            #head{
+                width:200px;
+                height:200px;
+                /*background-color: red;
+               /* background-image: img/1.png;
+                */
+            }
+            #add{
+                width:50px;
+                height:50px;
+                background-color: red;
+               /* background-image: img/1.png;
+                */
+            }
+            input{
+                width:200px;
+                height:50px;
+
+            }
+        </style>
+    </head>
+<body>
+    <div id="head"></div>
+    <input id="text" type="text">
+    <div id="add"></div>
+
+
+
+
+    <script>
+        var headImg = document.getElementsByTagName("div")[0];
+        var headImg1 = "red";
+        var headImg2 = "blue";
+                headImg.style.backgroundColor = headImg1;
+        headImg.onclick = function(){
+           if(window.getComputedStyle(headImg,null).backgroundColor == "rgb(255, 0, 0)"){
+               headImg.style.backgroundColor = headImg2;
+           }
+           else  headImg.style.backgroundColor = headImg1;
+
+            console.log(window.getComputedStyle(headImg,null).backgroundColor);
+        };
+        var add = document.getElementById("add");
+        add.onclick = function() {
+            if (document.getElementById("text").getAttribute("disabled") == "true")
+                document.getElementById("text").disabled = "false";
+            else
+                document.getElementById("text").disabled = "true";
+            console.log(window.getComputedStyle(document.getElementById("text"),null).disabled);
+        };
+       // console.log(document.getElementById("text").getAttribute("disabled"));
+
+
+    </script>
+</body>
+</html>
